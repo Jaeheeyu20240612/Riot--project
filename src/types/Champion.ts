@@ -1,4 +1,5 @@
 export type Champion = {
+  data: [];
   id: string;
   key: number;
   name: string;
