@@ -4,7 +4,7 @@ import React from 'react';
 const Header = () => {
   return (
     <header>
-      <nav className='w-full'>
+      <nav className='w-full '>
         <div className='flex'>
           <Link className='nav-link' href={'/'}>
             Home

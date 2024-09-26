@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className='w-full  text-white bg-gray-600 mt-5'>
+    <footer className='w-full  text-white bg-gray-600 mt-[50px]'>
       <p className='flex items-center justify-center text-center min-h-20 p-4'>
         [JH LoL-Info-Project] is not endorsed by Riot Games and does not reflect
         the views or opinions of Riot Games or anyone officially involved in
