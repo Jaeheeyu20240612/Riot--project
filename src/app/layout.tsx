@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <div className='grid grid-rows-[80px_1fr_auto]  '>
+        <div className='grid grid-rows-[80px_1fr_auto]'>
           <Header />
           {children}
           <Footer />
