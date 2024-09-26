@@ -1,4 +1,6 @@
 // 서버 컴포넌트에서 사용할 데이터 페칭 함수
+import { type Champion } from '@/types/Champion';
+import { Items } from '@/types/Items';
 
 export async function getStaticProps() {
   const res = await fetch(
@@ -28,8 +30,19 @@ export async function getChampionData() {
 }
 
 // 챔피언 상세 정보 가져오는 함수
+export async function getDetailChampions(id: string) {
+  try {
+    const res = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion/${id}.json`
+    );
+    const data: Champion = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-// 로테이션 챔피언 목록을 가져오는 함수
+// 로테이션 챔피언 id 목록을 가져오는 함수
 export async function getRotaionChampions() {
   try {
     const res = await fetch(
@@ -37,6 +50,19 @@ export async function getRotaionChampions() {
     );
     const data = res.json();
   } catch (error) {
-    console.error(error);
+    console.error();
+  }
+}
+
+// 아이템 목록 가져오는 함수
+export async function getItemLists() {
+  try {
+    const res = await fetch(
+      `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/item.json`
+    );
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.error();
   }
 }

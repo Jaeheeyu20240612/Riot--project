@@ -1,6 +1,10 @@
 import React from 'react';
 import { type Champion } from '../../../types/Champion';
 import Image from 'next/image';
+import { getChampionData, getDetailChampions } from '@/utils/serverApi';
+
+// TODO SSG렌더링하기 위해 빌드 시에 경로 생성
+
 type Params = {
   params: {
     id: Champion['id'];
@@ -9,11 +13,7 @@ type Params = {
 
 const ChampionDetailPage = async ({ params }: Params) => {
   const { id } = params;
-  const res = await fetch(
-    `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion/${id}.json`,
-    { cache: `force-cache` }
-  );
-  const data = await res.json();
+  const data = await getDetailChampions(id);
   const championdetail: Champion = data.data[id];
   return (
     <div className='grid grid-rows-[50px_1fr_auto] grid-cols-[auto] w-1/2 m-auto text-center mt-7 '>
