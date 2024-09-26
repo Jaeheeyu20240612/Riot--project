@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { type ChampionRotation } from '@/types/ChampionRotation';
+import { getChampionData } from '@/utils/serverApi';
 
 const RotationPage = () => {
-  const [champions, setChampions] = useState<ChampionRotation | null>(null);
+  const [rotationChampions, setRotationChampions] =
+    useState<ChampionRotation | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,9 +18,9 @@ const RotationPage = () => {
           throw new Error('Network response was not ok');
         }
         const data: ChampionRotation = await response.json();
-        setChampions(data);
-      } catch (err) {
-        setError(err.message);
+        setRotationChampions(data);
+      } catch (error) {
+        setError(error.message);
       } finally {
         setLoading(false);
       }
@@ -35,11 +37,16 @@ const RotationPage = () => {
     return <div>Error: {error}</div>;
   }
 
+  const filterId = () => {
+    const data = getChampionData();
+    console.log('get데이터', data);
+  };
+
   return (
     <div>
       <h1>챔피언 로테이션</h1>
       <ul>
-        {champions?.freeChampionIds.map((id) => (
+        {rotationChampions?.freeChampionIds.map((id) => (
           <li key={id}>Champion ID: {id}</li>
         ))}
       </ul>

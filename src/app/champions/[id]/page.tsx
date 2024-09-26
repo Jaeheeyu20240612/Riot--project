@@ -17,7 +17,7 @@ const ChampionDetailPage = async ({ params }: Params) => {
   const championdetail: Champion = data.data[id];
   return (
     <div className='grid grid-rows-[50px_1fr_auto] grid-cols-[auto] w-1/2 m-auto text-center mt-7 '>
-      {/* <p>{championdetail.name}</p>
+      <p>{championdetail.name}</p>
       <p>{championdetail.title}</p>
       <Image
         src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${championdetail.image.full}`}
@@ -33,7 +33,7 @@ const ChampionDetailPage = async ({ params }: Params) => {
         <li>방어력: {championdetail.info.defense}</li>
         <li>난이도: {championdetail.info.difficulty}</li>
         <li>마법력: {championdetail.info.magic}</li>
-      </ul> */}
+      </ul>
     </div>
   );
 };
