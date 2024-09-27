@@ -6,6 +6,7 @@ import { ChampionRotation, type RotationIds } from '@/types/ChampionRotation';
 import { getChampionData, getDetailChampions } from '@/utils/serverApi';
 import { Champion, ChampionData } from '@/types/Champion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const RotationPage = () => {
   const [rotationChampions, setRotationChampions] = useState<Champion[]>([]);
@@ -59,16 +60,18 @@ const RotationPage = () => {
       <h1>챔피언 로테이션</h1>
       <ul className='grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 w-full mt-3 p-5'>
         {rotationChampions?.map((champion) => (
-          <li className='' key={champion[0].id}>
-            <Image
-              width={150}
-              height={150}
-              alt={champion[0].name}
-              src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion[0].image.full}`}
-            />
-            <p className='font-bold text-lg'>{champion[0].name}</p>
-            <p>{champion[0].title}</p>
-          </li>
+          <Link href={`/champions/${champion[0].id}`}>
+            <li className='' key={champion[0].id}>
+              <Image
+                width={150}
+                height={150}
+                alt={champion[0].name}
+                src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${champion[0].image.full}`}
+              />
+              <p className='font-bold text-lg'>{champion[0].name}</p>
+              <p>{champion[0].title}</p>
+            </li>
+          </Link>
         ))}
       </ul>
     </div>
