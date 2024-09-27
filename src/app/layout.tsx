@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import TopButton from '@/components/TopButton';
 
 export const metadata: Metadata = {
   title: 'LoL 정보 앱',
@@ -19,7 +20,12 @@ export default function RootLayout({
       <body>
         <div className='grid grid-rows-[80px_1fr_auto] '>
           <Header />
-          <main className='min-h-full'>{children}</main>
+          <main className='min-h-full'>
+            {children}
+
+            <TopButton />
+          </main>
+
           <Footer />
         </div>
       </body>

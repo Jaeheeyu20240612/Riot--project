@@ -1,11 +1,13 @@
 import { getItemLists } from '@/utils/serverApi';
 import React from 'react';
-import { type Items } from '@/types/Items';
+import { Item, type Items } from '@/types/Items';
 import Image from 'next/image';
 
 const ItemsPage = async () => {
   const data: Items = await getItemLists();
-  const ItemLists = Object.values(data.data);
+  // console.log(data);
+  // console.log(typeof data);
+  const ItemLists: Item[] = Object.values(data);
   return (
     <div className='mb-12'>
       <h1 className=''>아이템 목록</h1>

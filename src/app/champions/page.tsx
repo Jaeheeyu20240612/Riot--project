@@ -1,11 +1,11 @@
-import { type Champion } from '../../types/Champion';
+import { Champion, Champions } from '../../types/Champion';
 import { getChampionData } from '@/utils/serverApi';
 import Image from 'next/image';
 import Link from 'next/link';
 
 // 서버 컴포넌트
 const ChampionsPage = async () => {
-  const data = await getChampionData();
+  const data: Champions = await getChampionData();
   const championArray: Champion[] = Object.values(data); // data.data를 배열로 변환
 
   return (
@@ -15,7 +15,7 @@ const ChampionsPage = async () => {
         {championArray.map((c: Champion) => (
           <ul
             key={c.id}
-            className=' p-5 rounded-lg shadow-lg bg-slate-400 text-white p-3 flex flex-col items-center justify-center transition-transform duration-150 hover:translate-y-[-5px]'
+            className='rounded-lg shadow-lg bg-slate-400 text-white p-4 flex flex-col items-center justify-center transition-transform duration-150 hover:translate-y-[-5px]'
           >
             <Link href={`/champions/${c.id}`}>
               <Image

@@ -1,6 +1,6 @@
 'use server';
 
-import { type Champion } from '@/types/Champion';
+import { Champions, type Champion } from '@/types/Champion';
 
 // 최신 버전
 // export async function getStaticProps() {
@@ -28,14 +28,14 @@ export async function getStaticProps() {
   };
 }
 
-// 챔피언 목록 가져오는 함수
+// 전체 챔피언 목록 가져오는 함수 ISR
 export async function getChampionData() {
   try {
     const res = await fetch(
       'https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion.json',
       {
         next: {
-          revalidate: 86640,
+          revalidate: 86400,
         },
       }
     );
@@ -47,7 +47,9 @@ export async function getChampionData() {
 }
 
 // 챔피언 상세 정보 가져오는 함수
-export async function getDetailChampions(id: string) {
+export async function getDetailChampions(
+  id: Champion['id']
+): Promise<Champion | undefined> {
   try {
     const res = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion/${id}.json`,
@@ -55,8 +57,8 @@ export async function getDetailChampions(id: string) {
         cache: 'force-cache',
       }
     );
-    const data: Champion = await res.json();
-    return data;
+    const data: Champions = await res.json();
+    return data.data;
   } catch (error) {
     console.log(error);
   }
@@ -76,7 +78,7 @@ export async function getDetailChampions(id: string) {
 //   return NextResponse.json(data);
 // }
 
-// 아이템 목록 가져오는 함수
+// 아이템 목록 가져오는 함수 SSG
 export async function getItemLists() {
   try {
     const res = await fetch(
@@ -86,7 +88,7 @@ export async function getItemLists() {
       }
     );
     const data = await res.json();
-    return data;
+    return data.data;
   } catch (error) {
     console.error(error);
   }

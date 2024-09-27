@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import { ChampionRotation, type RotationIds } from '@/types/ChampionRotation';
 import { getChampionData, getDetailChampions } from '@/utils/serverApi';
-import { Champion, ChampionData } from '@/types/Champion';
+import { Champion, Champions } from '@/types/Champion';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -21,13 +21,13 @@ const RotationPage = () => {
       const rotationData: ChampionRotation = await rotationResponse.json();
       const rotationChampionIds: RotationIds = rotationData.freeChampionIds;
 
-      const allChampions: ChampionData = await getChampionData();
+      const allChampions: Champions = await getChampionData();
       // console.log('전체 챔피언 데이터:', allChampions);
-      const championsArray = Object.values(allChampions);
+      const championsArray: Champion[] = Object.values(allChampions);
       // console.log(championsArray);
 
       // 챔피언 세부 정보 가져오기
-      const championsDetails = await Promise.all(
+      const championsDetails: Champion[] = await Promise.all(
         rotationChampionIds.map(async (id) => {
           const championDetail = championsArray.find(
             (e) => e.key === id.toString()
@@ -37,7 +37,7 @@ const RotationPage = () => {
           const data = await getDetailChampions(championDetail.id);
           console.log(data);
           if (!data) return;
-          const detailData = await Object.values(data.data);
+          const detailData = await Object.values(data);
           return detailData;
         })
       );

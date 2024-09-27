@@ -2,6 +2,7 @@ import React from 'react';
 import { type Champion } from '../../../types/Champion';
 import Image from 'next/image';
 import { getDetailChampions } from '@/utils/serverApi';
+import Link from 'next/link';
 
 // TODO SSG렌더링하기 위해 빌드 시에 경로 생성
 
@@ -13,25 +14,31 @@ const ChampionDetailPage = async ({ params }: Props) => {
   const { id } = params;
   const data = await getDetailChampions(id);
   if (!data) return;
-  const championdetail: Champion = data.data[id];
+  const ChampionData = data[id];
+  console.log(ChampionData);
+  // console.log(typeof data);
+  // console.log(data.image.full);
   return (
     <div className='grid grid-cols-1 place-items-center text-center gap-3 mt-7'>
-      <p>{championdetail.name}</p>
-      <p>{championdetail.title}</p>
+      <p>{ChampionData.name}</p>
+      <p>{ChampionData.title}</p>
       <Image
-        src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${championdetail.image.full}`}
+        src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${ChampionData.image?.full}`}
         width={300}
         height={300}
-        alt={championdetail.name}
+        alt={data.name}
       />
-      <p className='break-keep w-2/3'>{championdetail.blurb}</p>
+      <p className='break-keep w-2/3'>{data.blurb}</p>
 
       <ul>
         <h3>스탯</h3>
-        <li>공격력: {championdetail.info.attack}</li>
-        <li>방어력: {championdetail.info.defense}</li>
-        <li>난이도: {championdetail.info.difficulty}</li>
-        <li>마법력: {championdetail.info.magic}</li>
+        <li>공격력: {ChampionData.info?.attack}</li>
+        <li>방어력: {ChampionData.info?.defense}</li>
+        <li>난이도: {ChampionData.info?.difficulty}</li>
+        <li className='mb-3'>마법력: {ChampionData.info?.magic}</li>
+        <Link className='back-button ' href={'/champions'}>
+          돌아가기
+        </Link>
       </ul>
     </div>
   );
