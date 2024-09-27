@@ -9,7 +9,7 @@ const ChampionsPage = async () => {
   const championArray: Champion[] = Object.values(data); // data.data를 배열로 변환
 
   return (
-    <div>
+    <div className='mb-12'>
       <h1>챔피언 목록</h1>
       <div className='grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 mt-3 p-5'>
         {championArray.map((c: Champion) => (

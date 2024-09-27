@@ -15,7 +15,7 @@ const ChampionDetailPage = async ({ params }: Props) => {
   if (!data) return;
   const championdetail: Champion = data.data[id];
   return (
-    <div className='grid grid-rows-[50px_1fr_auto] grid-cols-[auto] w-1/2 m-auto text-center mt-7 '>
+    <div className='grid grid-cols-1 place-items-center text-center gap-3 mt-7'>
       <p>{championdetail.name}</p>
       <p>{championdetail.title}</p>
       <Image
@@ -24,7 +24,7 @@ const ChampionDetailPage = async ({ params }: Props) => {
         height={300}
         alt={championdetail.name}
       />
-      <p>{championdetail.blurb}</p>
+      <p className='break-keep w-2/3'>{championdetail.blurb}</p>
 
       <ul>
         <h3>스탯</h3>

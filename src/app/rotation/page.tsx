@@ -56,7 +56,7 @@ const RotationPage = () => {
   }, [rotationChampions]);
 
   return (
-    <div>
+    <div className='mb-12'>
       <h1>챔피언 로테이션</h1>
       <ul className='grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 w-full mt-3 p-5'>
         {rotationChampions?.map((champion) => (
