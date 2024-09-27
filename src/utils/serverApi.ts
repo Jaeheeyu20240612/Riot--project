@@ -1,29 +1,46 @@
-// 서버 컴포넌트에서 사용할 데이터 페칭 함수
+'use server';
+
 import { type Champion } from '@/types/Champion';
-import { Items } from '@/types/Items';
+
+// 최신 버전
+// export async function getStaticProps() {
+//   const res = await fetch(
+//     'https://ddragon.leagueoflegends.com/api/versions.json',
+//     {
+//       next: {
+//         revalidate: 3600,
+//       },
+//     }
+//   );
+//   const data = res.json();
+//   return {
+//     props: { data },
+//   };
+// }
 
 export async function getStaticProps() {
-  const res = await fetch(
-    'https://ddragon.leagueoflegends.com/api/versions.json',
-    {
-      next: {
-        revalidate: 3600,
-      },
-    }
-  );
-  const data = res.json();
+  const champions = await getChampionData();
+
   return {
-    props: { data },
+    props: {
+      allChampions: champions,
+    },
   };
 }
+
 // 챔피언 목록 가져오는 함수
 export async function getChampionData() {
   try {
     const res = await fetch(
-      'https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion.json'
+      'https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion.json',
+      {
+        next: {
+          revalidate: 86640,
+        },
+      }
     );
     const data = await res.json();
-    return data;
+    return data.data;
   } catch (error) {
     console.log(error);
   }
@@ -33,7 +50,10 @@ export async function getChampionData() {
 export async function getDetailChampions(id: string) {
   try {
     const res = await fetch(
-      `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion/${id}.json`
+      `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion/${id}.json`,
+      {
+        cache: 'force-cache',
+      }
     );
     const data: Champion = await res.json();
     return data;
@@ -43,26 +63,31 @@ export async function getDetailChampions(id: string) {
 }
 
 // 로테이션 챔피언 id 목록을 가져오는 함수
-export async function getRotaionChampions() {
-  try {
-    const res = await fetch(
-      'https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion/{id}.json'
-    );
-    const data = res.json();
-  } catch (error) {
-    console.error();
-  }
-}
+// export async function GET() {
+//   const res = await fetch(
+//     'https://kr.api.riotgames.com/lol/platform/v3/champion-rotations',
+//     {
+//       headers: {
+//         'X-Riot-Token': process.env.RIOT_API_KEY,
+//       },
+//     }
+//   );
+//   const data: ChampionRotation = await res.json();
+//   return NextResponse.json(data);
+// }
 
 // 아이템 목록 가져오는 함수
 export async function getItemLists() {
   try {
     const res = await fetch(
-      `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/item.json`
+      `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/item.json`,
+      {
+        cache: 'force-cache',
+      }
     );
-    const data = res.json();
+    const data = await res.json();
     return data;
   } catch (error) {
-    console.error();
+    console.error(error);
   }
 }

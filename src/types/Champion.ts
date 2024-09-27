@@ -1,7 +1,13 @@
-export type Champion = {
-  data: [];
+export interface ChampionData {
+  [key: string]: Champion; // 키는 챔피언 이름, 값은 Champion 객체
+}
+
+// 챔피언 세부 정보
+export interface Champion {
+  data: ChampionData;
+  version: string;
   id: string;
-  key: number;
+  key: string;
   name: string;
   title: string;
   blurb: string;
@@ -22,78 +28,26 @@ export type Champion = {
   };
   tags: string[];
   partype: string;
-  stats: {
-    hp: number;
-    hpperlevel: number;
-    mp: number;
-    mpperlevel: number;
-    movespeed: number;
-    armor: number;
-    armorperlevel: number;
-    spellblock: number;
-    spellblockperlevel: number;
-    attackrange: number;
-    hpregen: number;
-    hpregenperlevel: number;
-    mpregen: number;
-    mpregenperlevel: number;
-    crit: number;
-    critperlevel: number;
-    attackdamage: number;
-    attackdamageperlevel: number;
-    attackspeedperlevel: number;
-    attackspeed: number;
-  };
-};
-
-export type ChampionDetail = {
-  data: {
-    atrox: {
-      version: '14.19.1';
-      id: string;
-      key: number;
-      name: string;
-      title: string;
-      blurb: string;
-      info: {
-        attack: number;
-        defense: number;
-        magic: number;
-        difficulty: number;
-      };
-      image: {
-        full: string;
-        sprite: string;
-        group: string;
-        x: number;
-        y: number;
-        w: number;
-        h: number;
-      };
-      tags: string[];
-      partype: string;
-      stats: {
-        hp: number;
-        hpperlevel: number;
-        mp: number;
-        mpperlevel: number;
-        movespeed: number;
-        armor: number;
-        armorperlevel: number;
-        spellblock: number;
-        spellblockperlevel: number;
-        attackrange: number;
-        hpregen: number;
-        hpregenperlevel: number;
-        mpregen: number;
-        mpregenperlevel: number;
-        crit: number;
-        critperlevel: number;
-        attackdamage: number;
-        attackdamageperlevel: number;
-        attackspeedperlevel: number;
-        attackspeed: number;
-      };
-    };
-  };
-};
+  // stats: {
+  //   hp: number;
+  //   hpperlevel: number;
+  //   mp: number;
+  //   mpperlevel: number;
+  //   movespeed: number;
+  //   armor: number;
+  //   armorperlevel: number;
+  //   spellblock: number;
+  //   spellblockperlevel: number;
+  //   attackrange: number;
+  //   hpregen: number;
+  //   hpregenperlevel: number;
+  //   mpregen: number;
+  //   mpregenperlevel: number;
+  //   crit: number;
+  //   critperlevel: number;
+  //   attackdamage: number;
+  //   attackdamageperlevel: number;
+  //   attackspeedperlevel: number;
+  //   attackspeed: number;
+  // };
+}
