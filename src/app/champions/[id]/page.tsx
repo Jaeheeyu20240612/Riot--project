@@ -10,6 +10,14 @@ type Props = {
   params: { id: string };
 };
 
+export const generateMetadata = ({ params }: Props) => {
+  const { id } = params;
+  return {
+    title: `${id} - 챔피언 정보`,
+    description: `${id}의 상세정보 페이지입니다.`,
+  };
+};
+
 const ChampionDetailPage = async ({ params }: Props) => {
   const { id } = params;
   const data = await getDetailChampions(id);
