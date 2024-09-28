@@ -4,6 +4,7 @@ export interface Champions {
 
 // 챔피언 세부 정보
 export interface Champion {
+  data?: { [key: string]: Champion };
   version: string;
   id: string;
   key: string;
