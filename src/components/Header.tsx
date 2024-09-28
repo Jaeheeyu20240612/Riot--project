@@ -6,16 +6,28 @@ const Header = () => {
     <header>
       <nav className='w-full '>
         <div className='flex'>
-          <Link className='nav-link' href={'/'}>
+          <Link
+            className='nav-link hover:w-1/3 hover:bg-red-600 transition-all duration-300'
+            href={'/'}
+          >
             Home
           </Link>
-          <Link className='nav-link' href={'/champions'}>
+          <Link
+            className='nav-link hover:w-1/3 hover:bg-red-600 transition-all duration-300'
+            href={'/champions'}
+          >
             Champions
           </Link>
-          <Link className='nav-link' href={'/items'}>
+          <Link
+            className='nav-link hover:w-1/3 hover:bg-red-600 transition-all duration-300'
+            href={'/items'}
+          >
             Items
           </Link>
-          <Link className='nav-link' href={'/rotation'}>
+          <Link
+            className='nav-link hover:w-1/3 hover:bg-red-600 transition-all duration-300'
+            href={'/rotation'}
+          >
             Rotation
           </Link>
         </div>

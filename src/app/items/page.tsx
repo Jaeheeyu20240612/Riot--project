@@ -13,8 +13,8 @@ const ItemsPage = async () => {
   console.log(ItemLists);
 
   return (
-    <div className='mb-12'>
-      <h1 className=''>아이템 목록</h1>
+    <div className='mb-12 mt-10'>
+      <h1 className='text-center text-lg font-bold mb-3'>아이템 목록</h1>
       <div className='grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 p-5'>
         {ItemLists.map(([id, item]) => (
           <Link href={`/items/${id}`} key={id}>
@@ -27,7 +27,9 @@ const ItemsPage = async () => {
                 alt={item.name}
               />
               <li className='font-bold text-lg'>{item.name}</li>
-              <li className='break-keep text-center'>{item.plaintext}</li>
+              <li className='break-keep text-center text-md'>
+                {item.plaintext}
+              </li>
             </ul>
           </Link>
         ))}

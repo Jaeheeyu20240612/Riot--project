@@ -53,8 +53,8 @@ const RotationPage = () => {
 
   console.log(rotationChampions);
   return (
-    <div className='mb-12'>
-      <h1>챔피언 로테이션</h1>
+    <div className='mb-12 mt-10'>
+      <h1 className='text-center text-lg font-bold mb-6'>챔피언 로테이션</h1>
       {rotationChampions.length === 0 ? (
         <p>로테이션 챔피언을 불러오는 중입니다...</p>
       ) : (

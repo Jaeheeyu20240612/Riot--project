@@ -1,4 +1,4 @@
-import { Item, Items } from '@/types/Items';
+import { Item } from '@/types/Items';
 import { getItemLists } from '@/utils/serverApi';
 import Image from 'next/image';
 import React from 'react';
@@ -15,6 +15,7 @@ interface ExtendedItem extends Item {
 const ItemDetailPage = async ({ params }: Props) => {
   const { id } = params;
   const data = await getItemLists();
+
   const selectedItem: ExtendedItem = data[id];
   console.log(selectedItem);
 

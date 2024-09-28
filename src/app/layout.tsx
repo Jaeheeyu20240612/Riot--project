@@ -20,7 +20,7 @@ export default function RootLayout({
       <body>
         <div className='grid grid-rows-[80px_1fr_auto] '>
           <Header />
-          <main className='min-h-full'>
+          <main className='min-h-screen'>
             {children}
 
             <TopButton />

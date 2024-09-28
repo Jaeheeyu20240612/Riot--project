@@ -106,3 +106,10 @@ export async function getItemLists() {
     console.error(error);
   }
 }
+
+export async function getBackground(id: string) {
+  const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg`;
+  return {
+    imageUrl,
+  };
+}
