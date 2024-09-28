@@ -1,23 +1,18 @@
-import { type ChampionRotation } from '@/types/ChampionRotation';
+import { getChampionRotation } from '@/utils/serverApi';
 import { NextResponse } from 'next/server';
 
 // 챔피언 로테이션 정보
+// 클라이언트: handler에 GET요청 -> handler: 요청 수신 후 서버 액션 호출 -> server action: 실제 외부 api 호출
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function GET(request: Request) {
-  const apiToken = process.env.RIOT_API_KEY;
-  const res = await fetch(
-    'https://kr.api.riotgames.com/lol/platform/v3/champion-rotations',
-    {
-      headers: {
-        'User-Agent':
-          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36',
-        'Accept-Language': 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
-        'Accept-Charset': 'application/x-www-form-urlencoded; charset=UTF-8',
-        Origin: 'https://developer.riotgames.com',
-        'X-Riot-Token': apiToken || '',
-      },
-    }
-  );
-  const data: ChampionRotation = await res.json();
-  // console.log(data);
-  return NextResponse.json(data);
+  try {
+    const rotationData = await getChampionRotation();
+    return NextResponse.json(rotationData);
+  } catch (error) {
+    console.error('로테이션 데이터 가져오기 에러:', error);
+    return NextResponse.json(
+      { error: '로테이션 데이터를 가져오는 중 오류가 발생했습니다.' },
+      { status: 500 }
+    );
+  }
 }

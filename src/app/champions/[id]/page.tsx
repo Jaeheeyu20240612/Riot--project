@@ -1,10 +1,17 @@
 import React from 'react';
-import { type Champion } from '../../../types/Champion';
 import Image from 'next/image';
-import { getDetailChampions } from '@/utils/serverApi';
+import { getChampionData, getDetailChampions } from '@/utils/serverApi';
 import Link from 'next/link';
+import { Champion } from '@/types/Champion';
 
-// TODO SSG렌더링하기 위해 빌드 시에 경로 생성
+// TODO SSG렌더링하기 위해 빌드 시에 경로 생성 동적인 값을 static build하기
+export const generateStaticParams = async () => {
+  const data = await getChampionData();
+  const championsArray: Champion[] = Object.values(data);
+  const ids = championsArray.map((champion) => champion.id);
+  // console.log(ids);
+  return ids.map((id) => ({ id }));
+};
 
 type Props = {
   params: { id: string };
@@ -22,8 +29,8 @@ const ChampionDetailPage = async ({ params }: Props) => {
   const { id } = params;
   const data = await getDetailChampions(id);
   if (!data) return;
-  const ChampionData = data[id];
-  console.log(ChampionData);
+  const ChampionData: Champion = data;
+  // console.log(ChampionData);
   // console.log(typeof data);
   // console.log(data.image.full);
   return (
