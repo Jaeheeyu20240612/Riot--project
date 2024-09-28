@@ -11,6 +11,7 @@ export interface Item {
     w: number;
     h: number;
   };
+  data: { [key: string]: Item };
 }
 
 export interface Items {

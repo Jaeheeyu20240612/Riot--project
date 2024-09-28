@@ -100,6 +100,7 @@ export async function getItemLists() {
       }
     );
     const data = await res.json();
+    console.log(data.data.id);
     return data.data;
   } catch (error) {
     console.error(error);
