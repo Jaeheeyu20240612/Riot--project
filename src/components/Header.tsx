@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
+import DarkModeButton from './DarkModeButton';
 
 const Header = () => {
   return (
-    <header>
+    <header className='z-20'>
       <nav className='w-full '>
         <div className='flex'>
           <Link
@@ -31,6 +32,7 @@ const Header = () => {
             Rotation
           </Link>
         </div>
+        <DarkModeButton />
       </nav>
     </header>
   );

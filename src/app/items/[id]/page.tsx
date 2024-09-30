@@ -17,7 +17,7 @@ const ItemDetailPage = async ({ params }: Props) => {
   const data = await getItemLists();
 
   const selectedItem: ExtendedItem = data[id];
-  console.log(selectedItem);
+  // console.log(selectedItem);
 
   return (
     <div>

@@ -3,6 +3,10 @@ import { getChampionData } from '@/utils/serverApi';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'LOL 챔피언 목록 페이지',
+};
+
 // 서버 컴포넌트
 const ChampionsPage = async () => {
   const data: Champions = await getChampionData();

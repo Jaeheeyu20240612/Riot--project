@@ -4,13 +4,14 @@ import { Item, type Items } from '@/types/Items';
 import Image from 'next/image';
 import Link from 'next/link';
 
+export const metadata = {
+  title: '롤 아이템 목록 페이지',
+};
 const ItemsPage = async () => {
   const data: Items = await getItemLists();
-  console.log(data);
-
-  // data에서 ID와 아이템을 가져옵니다.
+  // console.log(data);
   const ItemLists: [string, Item][] = Object.entries(data);
-  console.log(ItemLists);
+  // console.log(ItemLists);
 
   return (
     <div className='mb-12 mt-10'>

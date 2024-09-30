@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import TopButton from '@/components/TopButton';
+import ThemeProvider from './provider/ThemeProvider';
 
 export const metadata: Metadata = {
   title: 'LoL 정보 앱',
@@ -16,16 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body>
-        <div className='grid grid-rows-[80px_1fr_auto] '>
+    <html lang='en' className='h-full'>
+      <body className='min-h-screen'>
+        <div className='grid grid-rows-[96px_1fr_auto] h-auto'>
           <Header />
-          <main className='min-h-screen'>
-            {children}
-
-            <TopButton />
+          <main className='h-auto'>
+            <ThemeProvider>{children}</ThemeProvider>
           </main>
-
           <Footer />
         </div>
       </body>

@@ -54,7 +54,7 @@ export async function getDetailChampions(
     const res = await fetch(
       `https://ddragon.leagueoflegends.com/cdn/14.19.1/data/ko_KR/champion/${id}.json`,
       {
-        cache: 'force-cache',
+        cache: 'no-store', // SSR
       }
     );
     const data: Champion = await res.json();
