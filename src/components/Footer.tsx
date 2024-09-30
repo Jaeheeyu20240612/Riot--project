@@ -3,7 +3,7 @@ import TopButton from './TopButton';
 
 const Footer = () => {
   return (
-    <div>
+    <div className='mt-auto'>
       <TopButton />
       <footer className='w-full mt-auto text-white bg-gray-600'>
         <p className='flex items-center justify-center text-center min-h-10 p-1'>

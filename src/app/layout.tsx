@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang='en' className='h-full'>
       <body className='min-h-screen'>
-        <div className='grid grid-rows-[96px_1fr_auto] h-auto'>
+        <div className='grid grid-rows-[64px_1fr_auto] h-auto'>
           <Header />
           <main className='h-auto'>
             <ThemeProvider>{children}</ThemeProvider>

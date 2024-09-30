@@ -20,33 +20,35 @@ const ItemDetailPage = async ({ params }: Props) => {
   // console.log(selectedItem);
 
   return (
-    <div>
-      ItemDetailPage입니다.
-      <p>아이템 : {selectedItem?.name}</p>
-      <Image
-        src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/item/${selectedItem?.image.full}`}
-        width={150}
-        height={150}
-        alt={selectedItem?.name}
-      />
-      <p>{selectedItem?.plaintext}</p>
-      <div className='flex flex-row gap-1'>
-        <p>Tags - </p>
-        {selectedItem.tags.map((tag, index) => (
-          <p className='' key={index}>
-            {tag},
-          </p>
-        ))}
+    <>
+      <div className='grid grid-cols-[20%_1fr_20%] h-screen place-items-center'>
+        <div></div>
+
+        <div className='p-4'>
+          <p>아이템 : {selectedItem?.name}</p>
+          <Image
+            src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/item/${selectedItem?.image.full}`}
+            width={150}
+            height={150}
+            alt={selectedItem?.name}
+          />
+          <p>{selectedItem?.plaintext}</p>
+          <p>Tags - </p>
+          {selectedItem.tags.map((tag, index) => (
+            <p className='' key={index}>
+              {tag},
+            </p>
+          ))}
+          <h4>Stats - </h4>
+          {Object.entries(selectedItem.stats).map(([key, value]) => (
+            <p key={key}>
+              {key}: {value}
+            </p>
+          ))}
+        </div>
+        <div></div>
       </div>
-      <div className='flex flex-row gap-1'>
-        <h4>Stats - </h4>
-        {Object.entries(selectedItem.stats).map(([key, value]) => (
-          <p key={key}>
-            {key}: {value}
-          </p>
-        ))}
-      </div>
-    </div>
+    </>
   );
 };
 
