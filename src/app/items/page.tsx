@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata = {
-  title: '롤 아이템 목록 페이지',
+  title: 'LOL 아이템 목록 페이지',
 };
 const ItemsPage = async () => {
   const data: Items = await getItemLists();

@@ -1,4 +1,4 @@
-import { Item } from '@/types/Items';
+import { Items } from '@/types/Items';
 import { getItemLists } from '@/utils/serverApi';
 import Image from 'next/image';
 import React from 'react';
@@ -7,17 +7,23 @@ type Props = {
   params: { id: string };
 };
 
-interface ExtendedItem extends Item {
-  tags: string[];
-  stats: { [key: string]: number }; // 키가 문자열이고 값이 숫자인 객체(인덱스 시그니처)
+export async function generateMetadata({ params }: Props) {
+  const { id } = params;
+  const items = await getItemLists();
+  console.log(items);
+  const itemName = items[id].name;
+  // console.log(itemName);
+  return {
+    title: `${itemName} - LOL 아이템 상세 정보`,
+  };
 }
 
 const ItemDetailPage = async ({ params }: Props) => {
   const { id } = params;
-  const data = await getItemLists();
-
-  const selectedItem: ExtendedItem = data[id];
+  const data: Items = await getItemLists();
+  const selectedItem = data[id];
   // console.log(selectedItem);
+  console.log(data[id]);
 
   return (
     <>

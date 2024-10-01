@@ -11,7 +11,8 @@ export interface Item {
     w: number;
     h: number;
   };
-  data: { [key: string]: Item };
+  tags: string[];
+  stats: { [key: string]: number };
 }
 
 export interface Items {
