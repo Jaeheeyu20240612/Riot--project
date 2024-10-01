@@ -9,12 +9,15 @@ import Link from 'next/link';
 
 const RotationPage = () => {
   const [rotationChampions, setRotationChampions] = useState<Champion[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setIsLoading(true);
+
         const rotationResponse = await fetch('/api/rotation');
+
         if (!rotationResponse.ok) {
           console.log('rotationResponse 에러');
           return;
@@ -50,14 +53,14 @@ const RotationPage = () => {
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  if (loading) {
+  if (isLoading) {
     return <p>로테이션 챔피언을 불러오는 중입니다!!!</p>;
   }
 
