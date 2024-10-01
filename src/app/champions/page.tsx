@@ -21,7 +21,8 @@ const ChampionsPage = async () => {
             key={c.id}
             className='rounded-lg flex flex-col items-center border border-red-600 mt-3 w-52 h-60 p-5'
           >
-            <Link href={`/champions/${c.id}`}>
+            {/* 쿼리 파라미터로 경로 전달 */}
+            <Link href={`/champions/${c.id}?from=/champions`}>
               <Image
                 src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/champion/${c.image.full}`}
                 className='rounded-lg m-auto'

@@ -19,6 +19,7 @@ export const generateStaticParams = async () => {
 
 type Props = {
   params: { id: string };
+  searchParams: { from?: string };
 };
 
 export const generateMetadata = ({ params }: Props) => {
@@ -30,7 +31,9 @@ export const generateMetadata = ({ params }: Props) => {
   };
 };
 
-const ChampionDetailPage = async ({ params }: Props) => {
+const ChampionDetailPage = async ({ params, searchParams }: Props) => {
+  const from = searchParams.from;
+  console.log(from);
   const { id } = params;
   const data = await getDetailChampions(id);
   if (!data) return;
@@ -73,7 +76,7 @@ const ChampionDetailPage = async ({ params }: Props) => {
             <li>방어력: {ChampionData.info?.defense}</li>
             <li>난이도: {ChampionData.info?.difficulty}</li>
             <li className='mb-3'>마법력: {ChampionData.info?.magic}</li>
-            <Link className='back-button' href={'/champions'}>
+            <Link className='back-button' href={`${from}`}>
               돌아가기
             </Link>
           </ul>
