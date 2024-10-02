@@ -1,13 +1,13 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { createJSONStorage, persist } from 'zustand/middleware';
 
 interface useThemeStoreProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
 }
 
-export const useThemeStore = create<useThemeStoreProps>(
-  persist(
+export const useThemeStore = create(
+  persist<useThemeStoreProps>(
     (set) => ({
       darkMode: false,
       toggleDarkMode: () => {
@@ -17,8 +17,8 @@ export const useThemeStore = create<useThemeStoreProps>(
       },
     }),
     {
-      name: 'theme-storage', // localStorage에 저장될 키
-      getStorage: () => localStorage, // 기본 스토리지로 localStorage 사용
+      name: 'theme-storage', // localStorage에 'theme-storage'라는 키로 상태를 저장
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
