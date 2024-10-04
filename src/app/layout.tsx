@@ -4,6 +4,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ThemeProvider from './provider/ThemeProvider';
+import Providers from './provider/Provider';
 
 export const metadata: Metadata = {
   title: 'LoL 정보 앱',
@@ -21,7 +22,9 @@ export default function RootLayout({
         <div className='grid grid-rows-[64px_1fr_auto] h-auto'>
           <Header />
           <main className='h-auto'>
-            <ThemeProvider>{children}</ThemeProvider>
+            <Providers>
+              <ThemeProvider>{children}</ThemeProvider>
+            </Providers>
           </main>
           <Footer />
         </div>
