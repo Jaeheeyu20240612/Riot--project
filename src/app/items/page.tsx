@@ -14,12 +14,12 @@ const ItemsPage = async () => {
   // console.log(ItemLists);
 
   return (
-    <div className='mb-12 mt-10'>
+    <div className='mb-12 mt-10 '>
       <h1 className='text-center text-lg font-bold mb-3'>아이템 목록</h1>
-      <div className='grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 p-5'>
+      <div className='grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 p-5 '>
         {ItemLists.map(([id, item]) => (
           <Link href={`/items/${id}`} key={id}>
-            <ul className='rounded-lg flex flex-col items-center border border-red-600 mt-3 w-52 h-60 p-5'>
+            <ul className='rounded-lg flex flex-col items-center border border-gray-300 shadow-lg mt-3 w-52 h-60 p-5 transition-transform transform hover:-translate-y-3'>
               <Image
                 className='rounded-lg mb-2'
                 src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/item/${item.image.full}`}

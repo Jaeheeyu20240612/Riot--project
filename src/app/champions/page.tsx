@@ -19,7 +19,7 @@ const ChampionsPage = async () => {
         {championArray.map((c: Champion) => (
           <ul
             key={c.id}
-            className='rounded-lg flex flex-col items-center border border-red-600 mt-3 w-52 h-60 p-5'
+            className='rounded-lg flex flex-col items-center border border-gray-300 shadow-lg mt-3 w-52 h-60 p-5 transition-transform transform hover:-translate-y-3'
           >
             {/* 쿼리 파라미터로 경로 전달 */}
             <Link href={`/champions/${c.id}?from=/champions`}>

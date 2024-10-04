@@ -78,7 +78,10 @@ const RotationPage = () => {
 
       <ul className='grid place-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 w-full mt-3 p-5'>
         {rotationChampions.map((champion) => (
-          <li key={champion.id}>
+          <li
+            key={champion.id}
+            className='transition-transform transform hover:-translate-y-3'
+          >
             {/* 쿼리 파라미터로 경로 저장 */}
             <Link href={`/champions/${champion.id}?from=/rotation`}>
               <Image

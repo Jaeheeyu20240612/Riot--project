@@ -26,7 +26,9 @@ export default function Home() {
               width={500}
               height={500}
             />
-            <p className='text-center mt-3 text-lg'>챔피언 목록 보기</p>
+            <p className='text-center mt-3 text-lg hover:underline'>
+              챔피언 목록 보기
+            </p>
           </Link>
         </section>
         <section className='mb-5'>
@@ -39,7 +41,9 @@ export default function Home() {
               width={500}
               height={500}
             />
-            <p className='text-center mt-3 text-lg'>금주 로테이션 확인</p>
+            <p className='text-center mt-3 text-lg hover:underline'>
+              금주 로테이션 확인
+            </p>
           </Link>
         </section>
 
@@ -53,7 +57,9 @@ export default function Home() {
               width={500}
               height={500}
             />
-            <p className='text-center mt-3 text-lg'> 아이템 목록 보기</p>
+            <p className='text-center mt-3 text-lg hover:underline'>
+              아이템 목록 보기
+            </p>
           </Link>
         </section>
       </div>
