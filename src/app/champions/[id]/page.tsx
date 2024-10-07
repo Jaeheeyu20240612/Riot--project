@@ -33,7 +33,7 @@ export const generateMetadata = ({ params }: Props) => {
 
 const ChampionDetailPage = async ({ params, searchParams }: Props) => {
   const from = searchParams.from;
-  console.log(from);
+  // console.log(from);
   const { id } = params;
   const data = await getDetailChampions(id);
   if (!data) return;

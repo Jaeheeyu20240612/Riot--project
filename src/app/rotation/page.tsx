@@ -35,7 +35,7 @@ const RotationPage = () => {
             const championDetail = championsArray.find(
               (all) => all.key === id.toString()
             );
-            console.log(championDetail);
+            // console.log(championDetail);
 
             if (!championDetail) {
               console.log(`ID ${id}에 해당하는 챔피언을 찾을 수 없습니다.`);
@@ -71,7 +71,7 @@ const RotationPage = () => {
     );
   }
 
-  console.log(rotationChampions);
+  // console.log(rotationChampions);
   return (
     <div className='mb-12 mt-10'>
       <h1 className='text-center text-lg font-bold mb-6'>챔피언 로테이션</h1>
