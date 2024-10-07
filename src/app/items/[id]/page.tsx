@@ -1,3 +1,4 @@
+import { Separator } from '@/components/ui/separator';
 import { Items } from '@/types/Items';
 import { getItemLists } from '@/utils/serverApi';
 import Image from 'next/image';
@@ -10,7 +11,7 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { id } = params;
   const items = await getItemLists();
-  console.log(items);
+  // console.log(items);
   const itemName = items[id].name;
   // console.log(itemName);
   return {
@@ -23,34 +24,42 @@ const ItemDetailPage = async ({ params }: Props) => {
   const data: Items = await getItemLists();
   const selectedItem = data[id];
   // console.log(selectedItem);
-  console.log(data[id]);
+  // console.log(data[id]);
+
+  // console.log(Object.entries(selectedItem.stats));
 
   return (
     <>
-      <div className='grid grid-cols-[20%_1fr_20%] h-screen place-items-center'>
+      <div className='text-center grid grid-cols-[20%_1fr_20%] h-screen place-items-center'>
         <div></div>
 
         <div className='p-4'>
-          <p>아이템 : {selectedItem?.name}</p>
+          <p className='text-lg font-bold text-center'>
+            아이템 : {selectedItem?.name}
+          </p>
           <Image
             src={`https://ddragon.leagueoflegends.com/cdn/14.19.1/img/item/${selectedItem?.image.full}`}
-            width={150}
-            height={150}
+            width={170}
+            height={170}
             alt={selectedItem?.name}
+            className='rounded-lg p-1 mx-auto'
           />
-          <p>{selectedItem?.plaintext}</p>
-          <p>Tags - </p>
-          {selectedItem.tags.map((tag, index) => (
-            <p className='' key={index}>
-              {tag},
-            </p>
-          ))}
-          <h4>Stats - </h4>
-          {Object.entries(selectedItem.stats).map(([key, value]) => (
-            <p key={key}>
-              {key}: {value}
-            </p>
-          ))}
+          <Separator className='mb-2' />
+          <p className='mb-2'>{selectedItem?.plaintext}</p>
+          {selectedItem.tags.length > 0 && (
+            <p className='mb-2'>Tags: {selectedItem.tags.join(', ')}</p>
+          )}
+
+          {selectedItem?.stats &&
+            Object.keys(selectedItem.stats).length > 0 && (
+              <>
+                {Object.entries(selectedItem.stats).map(([key, value]) => (
+                  <p key={key}>
+                    {key}: {value}
+                  </p>
+                ))}
+              </>
+            )}
         </div>
         <div></div>
       </div>

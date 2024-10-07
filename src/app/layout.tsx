@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className='h-full'>
+    <html lang='ko' className='h-full'>
       <body className='min-h-screen'>
         <div className='grid grid-rows-[64px_1fr_auto] h-auto'>
           <Header />
