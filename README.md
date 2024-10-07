@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## 🕹️ 리그오브레전드 정보 앱
 
-## Getting Started
+Riot API를 활용한 리그 오브 레전드 정보 앱으로 챔피언, 아이템, 금주 로테이션 챔피언에 대한 정보를 얻을 수 있습니다.
 
-First, run the development server:
+배포 링크 : https://riot-project-fcjiqf2ss-jaeheeyu20240612s-projects.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 필수 구현 사항
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- ✅ 프로젝트 셋업
+- ✅ 데이터 Fetching
+- ✅ 각 페이지 구현 및 렌더링 방식 적용
+- ✅ 레이아웃 및 네비게이션 구성
+- ✅ 배포하기 (vercel)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 도전 과제
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- ✅ 로딩 및 에러 핸들링
+- ✅ 반응형 디자인 및 UI 개선
+- ✅ 성능 최적화
+- ✅ 다크 모드 기능 구현
 
-## Learn More
+## 🛠️ 사용 기술
 
-To learn more about Next.js, take a look at the following resources:
+1.  프론트엔드 (Frontend)
+    </br>
+    shadCN UI
+    </br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    [![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1728288619055?alt=media&token=c69dc1d3-217a-4249-b6f2-10a07bb98069)](https://github.com/msdio/stackticon)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2.  버전 관리
+    </br>
+    [![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1728288659838?alt=media&token=a851bb0b-545f-4c21-a76c-7526aaf896c0)](https://github.com/msdio/stackticon)
