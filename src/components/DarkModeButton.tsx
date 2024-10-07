@@ -14,7 +14,13 @@ const DarkModeButton = () => {
         <Label className='text-4xl' htmlFor={toggleSwitch}>
           {darkMode ? '☀️' : '🌕'}
         </Label>
-        <Switch id={toggleSwitch} onClick={toggleDarkMode} className='' />
+        <Switch
+          id={toggleSwitch}
+          checked={darkMode}
+          onCheckedChange={toggleDarkMode}
+          // onClick={toggleDarkMode}
+          className=''
+        />
       </div>
     </div>
   );
